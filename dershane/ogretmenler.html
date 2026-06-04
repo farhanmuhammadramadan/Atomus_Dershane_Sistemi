@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atomus | Öğretmen Yönetimi</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+    <div class="mobile-menu-btn" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <aside class="sidebar" id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <i class="fas fa-chevron-left" id="toggle-icon"></i>
+        </div>
+        <div class="sidebar-header">
+            <img src="resim/sonLogo.jpeg" alt="Atomus Logo" class="sidebar-logo">
+            <div class="logo-text">
+                <span class="brand-name">ATOMUS</span>
+                <span class="brand-slogan">Eğitimin Yapı Taşı</span>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li >
+                    <a href="index.html">
+                        <div class="nav-icon-box"><i class="fas fa-th-large"></i></div>
+                        <span class="nav-text">Panel Özeti</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ogrenciler.html">
+                        <div class="nav-icon-box"><i class="fas fa-user-graduate"></i></div>
+                        <span class="nav-text">Öğrenciler</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="ogretmenler.html">
+                        <div class="nav-icon-box"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <span class="nav-text">Öğretmenler</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="siniflar.html">
+                        <div class="nav-icon-box"><i class="fas fa-layer-group"></i></div>
+                        <span class="nav-text">Sınıflar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="dersler.html">
+                        <div class="nav-icon-box"><i class="fas fa-book"></i></div>
+                        <span class="nav-text">Dersler</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="notlar.html">
+                        <div class="nav-icon-box"><i class="fas fa-sticky-note"></i></div>
+                        <span class="nav-text">Notlar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="odemeler.html">
+                        <div class="nav-icon-box"><i class="fas fa-credit-card"></i></div>
+                        <span class="nav-text">Ödemeler</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="sinavlar.html">
+                        <div class="nav-icon-box"><i class="fas fa-clipboard-check"></i></div>
+                        <span class="nav-text">Sınavlar</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="api/logout.php" class="logout-link">
+                    <div class="nav-icon-box"><i class="fas fa-power-off"></i></div>
+                    <span class="nav-text">Güvenli Çıkış</span>
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="page-info">
+                <h1>Öğretmen Yönetimi</h1>
+                <p>Eğitmen kadronuzu buradan yönetebilir ve yeni atamalar yapabilirsiniz.</p>
+            </div>
+        </header>
+
+        <section class="stat-grid">
+            <div class="stat-card">
+                <div class="stat-icon neutron-bg"><i class="fas fa-chalkboard-teacher"></i></div>
+                <div class="stat-details">
+                    <h3>Toplam Öğretmen</h3>
+                    <p class="stat-number" id="toplam_sayi">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon electron-bg"><i class="fas fa-graduation-cap"></i></div>
+                <div class="stat-details">
+                    <h3>Aktif Branşlar</h3>
+                    <p class="stat-number">4</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="data-section" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <h2 id="formTitle"><i class="fas fa-user-plus" style="color: var(--accent-blue);"></i> Yeni Öğretmen Ekle</h2>
+            </div>
+            <form id="teacherForm" class="modern-form">
+                <div class="form-group">
+                    <label>Ad</label>
+                    <input type="text" name="ad" id="inputAd" placeholder="Ahmet" required 
+                           style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; padding: 12px; border-radius: 10px;">
+                </div>
+                <div class="form-group">
+                    <label>Soyad</label>
+                    <input type="text" name="soyad" id="inputSoyad" placeholder="Yılmaz" required
+                           style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; padding: 12px; border-radius: 10px;">
+                </div>
+                <div class="form-group">
+                    <label>Branş</label>
+                    <select name="brans_id" id="inputBrans" class="atomus-select" required
+                            style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; padding: 12px; border-radius: 10px;">
+                        <option value="">Branş Seçiniz</option>
+                        <option value="1">Matematik</option>
+                        <option value="2">Fizik</option>
+                        <option value="3">Türkçe</option>
+                        <option value="4">Kimya</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Telefon</label>
+                    <input type="tel" name="telefon" id="inputTel" placeholder="05xx..." required
+                           style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; padding: 12px; border-radius: 10px;">
+                </div>
+                <div class="form-group" style="justify-content: flex-end; flex: 0.4;">
+                    <label>&nbsp;</label> <button type="submit" id="submitBtn" class="btn-add" style="width: 100%; height: 48px; background: var(--accent-blue); color: var(--bg-dark); border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: var(--transition);">
+                        Kaydet
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="data-section">
+            <div class="section-header">
+                <h2><i class="fas fa-list-ul" style="color: var(--accent-blue);"></i> Mevcut Öğretmen Listesi</h2>
+            </div>
+            <div class="table-container">
+                <table id="teacherTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Ad Soyad</th>
+                            <th>Branş</th>
+                            <th>Telefon</th>
+                            <th style="text-align: right;">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5" class="loading"><i class="fas fa-spinner fa-spin"></i> Veriler Hazırlanıyor...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+    // Sidebar toggle fonksiyonunu buraya da ekledim (index.html'deki gibi çalışması için)
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const icon = document.getElementById('toggle-icon');
+        
+        if (window.innerWidth <= 992) {
+            sidebar.classList.toggle('active');
+        } else {
+            sidebar.classList.toggle('collapsed');
+            if(sidebar.classList.contains('collapsed')) {
+                icon.classList.replace('fa-chevron-left', 'fa-chevron-right');
+            } else {
+                icon.classList.replace('fa-chevron-right', 'fa-chevron-left');
+            }
+        }
+    }
+</script>
+<script src="ogretmenler.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,417 @@
+/* --- Temel Ayarlar & Değişkenler --- */
+:root {
+    --bg-dark: #0f172a;
+    --bg-card: rgba(30, 41, 59, 0.7); 
+    --accent-blue: #38bdf8;
+    --proton-red: #f43f5e;
+    --electron-cyan: #22d3ee;
+    --text-main: #f1f5f9;
+    --text-dim: #94a3b8;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Navigasyon (Navbar) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-logo {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-blue);
+    object-fit: cover;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.brand-slogan {
+    font-size: 0.7rem;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dim);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent-blue);
+}
+
+.btn-login-outline {
+    text-decoration: none;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    transition: var(--transition);
+}
+
+.btn-login-outline:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+/* --- Hero Alanı --- */
+.hero-section {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+    padding-top: 80px;
+}
+
+.hero-content {
+    max-width: 800px;
+    z-index: 2;
+}
+
+.badge {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--accent-blue);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.hero-section h1 span {
+    color: var(--accent-blue);
+}
+
+.hero-section p {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    margin-bottom: 40px;
+}
+
+.btn-main {
+    text-decoration: none;
+    background: var(--accent-blue);
+    color: var(--bg-dark);
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-weight: 700;
+    margin-right: 15px;
+    display: inline-block;
+}
+
+.btn-secondary {
+    text-decoration: none;
+    color: white;
+    border-bottom: 2px solid var(--accent-blue);
+    padding-bottom: 5px;
+    font-weight: 600;
+}
+
+/* --- Kurumsal (About) Bölümü --- */
+.about-detailed {
+    padding: 120px 0;
+    background: linear-gradient(to bottom, #0f172a, #1e293b);
+}
+
+.about-row {
+    display: flex;
+    gap: 80px;
+    align-items: center;
+}
+
+.pre-title {
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.about-content h2 {
+    font-size: 2.8rem;
+    margin: 15px 0 25px;
+    line-height: 1.2;
+}
+
+.about-content h2 span {
+    color: var(--accent-blue);
+}
+
+.milestones {
+    margin: 35px 0;
+    border-left: 2px solid rgba(56, 189, 248, 0.3);
+    padding-left: 25px;
+}
+
+.m-item {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.m-item::before {
+    content: '';
+    position: absolute;
+    left: -31px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-blue);
+}
+
+.m-year {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* --- Görsel Alanı Güncellemesi --- */
+.about-visual {
+    flex: 0.6; /* Değeri 0.8'den 0.6'ya düşürerek alanı daralttık */
+    position: relative;
+    display: flex;
+    justify-content: center; /* Resmi alanı içinde ortalar */
+}
+
+.about-img-main {
+    width: 80%; /* Genişliği %100'den %80'e çektik */
+    max-width: 350px; /* Resmin çok büyümesini engellemek için sınır koyduk */
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Badge (30 Yıl yazısı) resme göre çok büyük kalmasın diye ufak bir ayar */
+.experience-badge {
+    padding: 15px; /* Padding değerini düşürdük */
+    bottom: -20px;
+    left: 0; /* Resim küçüldüğü için konumu hizaladık */
+}
+
+.exp-num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    display: block;
+    line-height: 1;
+}
+
+.exp-text {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* --- Felsefe (Concept) Cards --- */
+.concept-area {
+    padding: 100px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.concept-card {
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.concept-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-blue);
+}
+
+.icon-wrap {
+    width: 60px;
+    height: 60px;
+    background: rgba(56, 189, 248, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    font-size: 1.5rem;
+    color: var(--accent-blue);
+}
+
+.proton .icon-wrap { color: var(--proton-red); background: rgba(244, 63, 94, 0.1); }
+.electron .icon-wrap { color: var(--electron-cyan); background: rgba(34, 211, 238, 0.1); }
+
+.concept-card p {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+}
+
+/* --- Hizmetler --- */
+.services-section {
+    padding: 100px 0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    transition: var(--transition);
+}
+
+.service-card i {
+    font-size: 3rem;
+    color: var(--accent-blue);
+    margin-bottom: 20px;
+}
+
+.service-card:hover {
+    background: rgba(56, 189, 248, 0.05);
+    border-color: var(--accent-blue);
+}
+
+/* --- İletişim & Footer --- */
+.contact-section {
+    padding: 100px 0;
+    background: rgba(15, 23, 42, 0.9);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.info-item i {
+    color: var(--accent-blue);
+    width: 20px;
+}
+
+.footer {
+    padding: 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+/* --- Mobil Uyumluluk --- */
+@media (max-width: 992px) {
+    .about-row {
+        flex-direction: column;
+        text-align: center;
+    }
+    .milestones {
+        border-left: none;
+        padding-left: 0;
+    }
+    .m-item::before {
+        display: none;
+    }
+    .experience-badge {
+        position: static;
+        margin-top: 30px;
+        display: inline-block;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links, .auth-box {
+        display: none; /* Basitlik için mobilde gizlendi */
+    }
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+    .hero-section {
+        height: auto;
+        padding: 150px 0 80px;
+    }
+}

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personel Girişi - Atomus Yönetim Sistemi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7); 
+            --accent-blue: #38bdf8;
+            --proton-red: #f43f5e;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            overflow: hidden;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        .login-box {
+            background: var(--bg-card);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .logo-area {
+            margin-bottom: 30px;
+        }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-blue);
+            margin-bottom: 15px;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+        }
+
+        .login-box h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .login-box p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-blue);
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 14px 15px 14px 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: white;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .login-box input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent-blue);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .login-box button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+            filter: brightness(1.1);
+        }
+
+        #errorMsg {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            background: rgba(244, 63, 94, 0.1);
+            color: var(--proton-red);
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        /* Arka plan atom süslemeleri */
+        .decoration {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--accent-blue);
+            filter: blur(150px);
+            opacity: 0.1;
+            z-index: 1;
+        }
+        .top-left { top: -100px; left: -100px; }
+        .bottom-right { bottom: -100px; right: -100px; }
+    </style>
+</head>
+<body>
+
+    <div class="decoration top-left"></div>
+    <div class="decoration bottom-right"></div>
+
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo-area">
+                <img src="resim/sonLogo.jpeg" alt="Atomus Logo" class="logo-img">
+                <h2>ATOMUS</h2>
+                <p>Yönetim Paneli Girişi</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="kullanici_adi" placeholder="Kullanıcı Adı" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="sifre" placeholder="Şifre" required>
+                </div>
+                <button type="submit">Giriş Yap <i class="fas fa-arrow-right" style="margin-left: 8px; color: inherit; position: static; transform: none;"></i></button>
+            </form>
+
+            <p id="errorMsg">Hatalı kullanıcı adı veya şifre!</p>
+            
+            <div style="margin-top: 25px;">
+                <a href="tanitim.html" style="color: var(--text-dim); text-decoration: none; font-size: 0.8rem;">
+                    <i class="fas fa-chevron-left"></i> Ana Sayfaya Dön
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      document.getElementById('loginForm').onsubmit = function(e) {
+        e.preventDefault();
+        
+        const kadi = document.getElementById('kullanici_adi').value;
+        const sifre = document.getElementById('sifre').value;
+        const errorMsg = document.getElementById('errorMsg');
+
+        fetch('api/login_control.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ kullanici_adi: kadi, sifre: sifre })
+        })
+        .then(res => {
+            if (!res.ok) throw new Error("Sunucu hatası");
+            return res.text();
+        })
+        .then(text => {
+            try {
+                const data = JSON.parse(text);
+                if (data.status === 200) {
+                    window.location.href = 'index.html';
+                } else {
+                    errorMsg.style.display = 'block';
+                    errorMsg.innerText = data.message;
+                }
+            } catch (e) {
+                console.error("Bozuk veri:", text);
+                alert("Sunucudan geçersiz yanıt geldi!");
+            }
+        })
+        .catch(err => {
+            alert("Bağlantı sağlanamadı!");
+        });
+      };
+    </script>
+</body>
+</html>

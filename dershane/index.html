@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atomus | Yönetim Paneli</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+    <div class="mobile-menu-btn" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+</div>
+    
+    <aside class="sidebar" id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <i class="fas fa-chevron-left" id="toggle-icon"></i>
+        </div>
+
+        <div class="sidebar-header">
+            <img src="resim/sonLogo.jpeg" alt="Atomus Logo" class="sidebar-logo">
+            <div class="logo-text">
+                <span class="brand-name">ATOMUS</span>
+                <span class="brand-slogan">Eğitimin Yapı Taşı</span>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active" >
+                    <a href="index.html">
+                        <div class="nav-icon-box"><i class="fas fa-th-large"></i></div>
+                        <span class="nav-text">Panel Özeti</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ogrenciler.html">
+                        <div class="nav-icon-box"><i class="fas fa-user-graduate"></i></div>
+                        <span class="nav-text">Öğrenciler</span>
+                    </a>
+                </li>
+                <li >
+                    <a href="ogretmenler.html">
+                        <div class="nav-icon-box"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <span class="nav-text">Öğretmenler</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="siniflar.html">
+                        <div class="nav-icon-box"><i class="fas fa-layer-group"></i></div>
+                        <span class="nav-text">Sınıflar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="dersler.html">
+                        <div class="nav-icon-box"><i class="fas fa-book"></i></div>
+                        <span class="nav-text">Dersler</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="notlar.html">
+                        <div class="nav-icon-box"><i class="fas fa-sticky-note"></i></div>
+                        <span class="nav-text">Notlar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="odemeler.html">
+                        <div class="nav-icon-box"><i class="fas fa-credit-card"></i></div>
+                        <span class="nav-text">Ödemeler</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="sinavlar.html">
+                        <div class="nav-icon-box"><i class="fas fa-clipboard-check"></i></div>
+                        <span class="nav-text">Sınavlar</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="api/logout.php" class="logout-link">
+                    <div class="nav-icon-box"><i class="fas fa-power-off"></i></div>
+                    <span class="nav-text">Güvenli Çıkış</span>
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="page-info">
+                <h1>Hoş Geldiniz, Admin</h1>
+                <p>Atomus ekosistemindeki son gelişmeleri buradan takip edin.</p>
+            </div>
+        </header>
+
+        <section class="stat-grid">
+            <div class="stat-card">
+                <div class="stat-icon proton-bg"><i class="fas fa-users"></i></div>
+                <div class="stat-details">
+                    <h3>Öğrenci Sayısı</h3>
+                    <p class="stat-number" id="toplam_ogrenci">...</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon neutron-bg"><i class="fas fa-user-tie"></i></div>
+                <div class="stat-details">
+                    <h3>Öğretmen Sayısı</h3>
+                    <p class="stat-number" id="toplam_ogretmen">...</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon electron-bg"><i class="fas fa-school"></i></div>
+                <div class="stat-details">
+                    <h3>Aktif Sınıf</h3>
+                    <p class="stat-number" id="toplam_sinif">...</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon income-bg"><i class="fas fa-lira-sign"></i></div>
+                <div class="stat-details">
+                    <h3>Kasa Toplamı</h3>
+                    <p class="stat-number" id="toplam_gelir">₺0</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="data-section">
+            <div class="section-header">
+                <h2><i class="fas fa-user-plus"></i> Son Kayıtlı Öğrenciler</h2>
+            </div>
+            <div class="table-container">
+               <table>
+                   <thead>
+                       <tr>
+                           <th>ID</th>
+                           <th>Ad</th>
+                           <th>Soyad</th>
+                           <th>Telefon</th>
+                           
+                       </tr>
+                   </thead>
+                   <tbody id="index_ogrenci_tablo">
+                       <tr>
+                           <td colspan="4" class="loading">
+                               <i class="fas fa-spinner fa-spin"></i> Veriler getiriliyor...
+                           </td>
+                       </tr>
+                   </tbody>
+               </table>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const icon = document.getElementById('toggle-icon');
+        sidebar.classList.toggle('collapsed');
+        
+        if(sidebar.classList.contains('collapsed')) {
+            icon.classList.replace('fa-chevron-left', 'fa-chevron-right');
+        } else {
+            icon.classList.replace('fa-chevron-right', 'fa-chevron-left');
+        }
+    }
+</script>
+<script src="index.js"></script>
+
+</body>
+</html>

@@ -2,7 +2,7 @@
 // Veritabanı bağlantı bilgileri
 // Senin oluşturduğun veritabanı ismine göre düzenlendi
 $host = "localhost";
-$dbname = "dershane_sistemi"; // Burası phpMyAdmin'deki veritabanı adınla aynı olmalı
+$dbname = "atomus_dershane_sistemi"; // Burası phpMyAdmin'deki veritabanı adınla aynı olmalı
 $username = "root";
 $password = ""; // XAMPP kullanıyorsan varsayılan olarak boştur
 
